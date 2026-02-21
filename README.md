@@ -25,4 +25,4 @@ to estimate whether your weight is in a healthy range.
 - C#
 
 ## Author
-Your Name Here
+Althea Cinco
