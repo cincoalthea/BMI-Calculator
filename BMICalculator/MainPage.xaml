@@ -18,6 +18,9 @@
                 TextColor="{AppThemeBinding Light=Gray, Dark=LightGray}" />
 
             <Label Text="Weight (kg)" />
+            
+            <!-- Input box -->
+            <!-- Var name is "WeightEntry" -->
             <Entry
                 x:Name="WeightEntry"
                 Placeholder="e.g. 68.5"
@@ -25,25 +28,33 @@
                 ClearButtonVisibility="WhileEditing" />
 
             <Label Text="Height (cm)" />
+            
+            <!-- Input box -->
+            <!-- Var name is "HeightEntry" -->
             <Entry
                 x:Name="HeightEntry"
                 Placeholder="e.g. 172"
                 Keyboard="Numeric"
                 ClearButtonVisibility="WhileEditing" />
-
+            
+            <!-- When clicked, the OnCalculateBmiClicked function will execute -->
             <Button
                 Text="Calculate BMI"
                 Clicked="OnCalculateBmiClicked"
                 Margin="0,8,0,0" />
-
+            
+            <!-- Show results -->
             <Frame Padding="16" Margin="0,12,0,0">
                 <VerticalStackLayout Spacing="8">
                     <Label
                         Text="Result"
                         FontAttributes="Bold"
                         FontSize="18" />
+                    <!-- Variable: BmiResultLabel -->
                     <Label x:Name="BmiResultLabel" Text="BMI: -" />
+                    <!-- Variable: CategoryLabel -->
                     <Label x:Name="CategoryLabel" Text="Category: -" />
+                    <!-- Variable: MessageLabel -->
                     <Label x:Name="MessageLabel" TextColor="IndianRed" />
                 </VerticalStackLayout>
             </Frame>
