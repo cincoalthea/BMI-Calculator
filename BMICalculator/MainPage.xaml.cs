@@ -5,6 +5,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        UpdateCategoryChips(null);
     }
 
     //When button "Calculate BMI" is clicked
@@ -35,6 +36,7 @@ public partial class MainPage : ContentPage
         //Replace the text to be displayed for the BMI result and category
         BmiResultLabel.Text = $"BMI: {bmi:F1}";
         CategoryLabel.Text = $"Category: {category}";
+        UpdateCategoryChips(category);
     }
     
     //Show nothing for BMI and Category
@@ -44,6 +46,7 @@ public partial class MainPage : ContentPage
         BmiResultLabel.Text = "BMI: -";
         CategoryLabel.Text = "Category: -";
         MessageLabel.Text = message;
+        UpdateCategoryChips(null);
     }
 
     //Calculate BMI Category (Underweight, Normal weight, Overweight, and Obese) and return it
@@ -56,5 +59,26 @@ public partial class MainPage : ContentPage
         if (bmi < 30)
             return "Overweight";
         return "Obesity";
+    }
+
+    private void UpdateCategoryChips(string? activeCategory)
+    {
+        SetChipState(UnderweightChip, activeCategory == "Underweight");
+        SetChipState(NormalWeightChip, activeCategory == "Normal weight");
+        SetChipState(OverweightChip, activeCategory == "Overweight");
+        SetChipState(ObesityChip, activeCategory == "Obesity");
+    }
+
+    private static void SetChipState(Border chip, bool isActive)
+    {
+        if (isActive)
+        {
+            chip.BackgroundColor = Color.FromArgb("#FDBA74");
+            chip.Stroke = Color.FromArgb("#FB923C");
+            return;
+        }
+
+        chip.BackgroundColor = Color.FromArgb("#F8FAFC");
+        chip.Stroke = Color.FromArgb("#CBD5E1");
     }
 }

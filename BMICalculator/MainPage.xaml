@@ -3,61 +3,143 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BMICalculator.MainPage"
              Title="BMI Calculator">
+    <ContentPage.Background>
+        <SolidColorBrush Color="#F3ECFF" />
+    </ContentPage.Background>
+
     <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="16">
-            <Label
-                Text="BMI Calculator"
-                FontSize="32"
-                FontAttributes="Bold"
-                HorizontalOptions="Center" />
+        <VerticalStackLayout Padding="24,28,24,24" Spacing="16">
+            <VerticalStackLayout Spacing="4" Padding="0,18,0,10">
+                <Label
+                    Text="BMI Calculator"
+                    FontSize="34"
+                    FontAttributes="Bold"
+                    FontFamily="OpenSansSemibold"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#0F172A" />
+            </VerticalStackLayout>
 
             <Label
                 Text="Enter weight in kilograms and height in centimeters."
+                FontFamily="OpenSansSemibold"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                TextColor="{AppThemeBinding Light=Gray, Dark=LightGray}" />
+                TextColor="#475569" />
 
-            <Label Text="Weight (kg)" />
-            
-            <!-- Input box -->
-            <!-- Var name is "WeightEntry" -->
-            <Entry
-                x:Name="WeightEntry"
-                Placeholder="e.g. 68.5"
-                Keyboard="Numeric"
-                ClearButtonVisibility="WhileEditing" />
+            <Border
+                Padding="16"
+                StrokeThickness="0"
+                BackgroundColor="#FFFFFFFF"
+                StrokeShape="RoundRectangle 24">
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        Text="Weight (kg)"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansSemibold"
+                        TextColor="#334155" />
+                    <Entry
+                        x:Name="WeightEntry"
+                        FontFamily="OpenSansSemibold"
+                        Placeholder="e.g. 68.5"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing" />
 
-            <Label Text="Height (cm)" />
-            
-            <!-- Input box -->
-            <!-- Var name is "HeightEntry" -->
-            <Entry
-                x:Name="HeightEntry"
-                Placeholder="e.g. 172"
-                Keyboard="Numeric"
-                ClearButtonVisibility="WhileEditing" />
-            
-            <!-- When clicked, the OnCalculateBmiClicked function will execute -->
-            <Button
-                Text="Calculate BMI"
-                Clicked="OnCalculateBmiClicked"
-                Margin="0,8,0,0" />
-            
-            <!-- Show results -->
-            <Frame Padding="16" Margin="0,12,0,0">
-                <VerticalStackLayout Spacing="8">
+                    <Label
+                        Text="Height (cm)"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansSemibold"
+                        TextColor="#334155" />
+                    <Entry
+                        x:Name="HeightEntry"
+                        FontFamily="OpenSansSemibold"
+                        Placeholder="e.g. 172"
+                        Keyboard="Numeric"
+                        ClearButtonVisibility="WhileEditing" />
+
+                    <Button
+                        Text="Calculate BMI"
+                        FontFamily="OpenSansSemibold"
+                        Clicked="OnCalculateBmiClicked"
+                        Margin="0,8,0,0" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border
+                Padding="18"
+                Margin="0,12,0,0"
+                StrokeThickness="0"
+                Background="#FFFFFFFF"
+                StrokeShape="RoundRectangle 24">
+                <VerticalStackLayout Spacing="12">
                     <Label
                         Text="Result"
                         FontAttributes="Bold"
-                        FontSize="18" />
-                    <!-- Variable: BmiResultLabel -->
-                    <Label x:Name="BmiResultLabel" Text="BMI: -" />
-                    <!-- Variable: CategoryLabel -->
-                    <Label x:Name="CategoryLabel" Text="Category: -" />
-                    <!-- Variable: MessageLabel -->
-                    <Label x:Name="MessageLabel" TextColor="IndianRed" />
+                        FontFamily="OpenSansSemibold"
+                        FontSize="18"
+                        TextColor="#0F172A" />
+                    <Label
+                        x:Name="BmiResultLabel"
+                        Text="BMI: -"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="30"
+                        TextColor="#0F172A" />
+                    <Label
+                        x:Name="CategoryLabel"
+                        Text="Category: -"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="16"
+                        TextColor="#334155" />
+
+                    <Label
+                        Text="Categories"
+                        FontAttributes="Bold"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="14"
+                        TextColor="#64748B" />
+                    <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Center">
+                        <Border
+                            x:Name="UnderweightChip"
+                            Margin="0,0,8,8"
+                            Padding="12,6"
+                            Stroke="#CBD5E1"
+                            Background="#F8FAFC"
+                            StrokeShape="RoundRectangle 14">
+                            <Label Text="Underweight" FontFamily="OpenSansSemibold" TextColor="#334155" />
+                        </Border>
+                        <Border
+                            x:Name="NormalWeightChip"
+                            Margin="0,0,8,8"
+                            Padding="12,6"
+                            Stroke="#CBD5E1"
+                            Background="#F8FAFC"
+                            StrokeShape="RoundRectangle 14">
+                            <Label Text="Normal weight" FontFamily="OpenSansSemibold" TextColor="#334155" />
+                        </Border>
+                        <Border
+                            x:Name="OverweightChip"
+                            Margin="0,0,8,8"
+                            Padding="12,6"
+                            Stroke="#CBD5E1"
+                            Background="#F8FAFC"
+                            StrokeShape="RoundRectangle 14">
+                            <Label Text="Overweight" FontFamily="OpenSansSemibold" TextColor="#334155" />
+                        </Border>
+                        <Border
+                            x:Name="ObesityChip"
+                            Margin="0,0,8,8"
+                            Padding="12,6"
+                            Stroke="#CBD5E1"
+                            Background="#F8FAFC"
+                            StrokeShape="RoundRectangle 14">
+                            <Label Text="Obesity" FontFamily="OpenSansSemibold" TextColor="#334155" />
+                        </Border>
+                    </FlexLayout>
+
+                    <Label x:Name="MessageLabel" FontFamily="OpenSansSemibold" TextColor="IndianRed" />
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 
